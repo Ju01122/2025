@@ -11,3 +11,8 @@ StandardScaler
 LinearRegression
 RandomForestRegressor
 r2_score, mean_absolute_error, mean_squared_error
+streamlit
+pandas
+numpy
+scikit-learn
+openpyxl
