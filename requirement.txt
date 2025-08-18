@@ -3,15 +3,6 @@ scikit-learn
 io
 pandas
 numpy
-train_test_split, TimeSeriesSplit, cross_val_score
-Pipeline
-ColumnTransformer
-SimpleImputer
-StandardScaler
-LinearRegression
-RandomForestRegressor
-r2_score, mean_absolute_error, mean_squared_error
-streamlit
 pandas
 numpy
 scikit-learn
