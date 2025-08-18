@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
 
 # 제목
 st.title("🌱 스마트팜 가상 실험실")
@@ -20,7 +20,6 @@ def suitability(value, opt_min, opt_max):
     if opt_min <= value <= opt_max:
         return 1.0
     else:
-        # 범위를 벗어나면 선형적으로 점수 하락
         dist = min(abs(value - opt_min), abs(value - opt_max))
         return max(0, 1 - dist * 0.05)
 
@@ -35,15 +34,15 @@ growth_factor = (score_temp + score_hum + score_water) / 3
 max_height = 100  # 최대 성장치
 growth_curve = max_height / (1 + np.exp(-0.2 * (days - 15))) * growth_factor
 
+# Pandas DataFrame으로 변환
+df = pd.DataFrame({
+    "일수": days,
+    "성장 정도 (%)": growth_curve
+})
+
 # 결과 출력
 st.subheader("📈 작물 성장 시뮬레이션 결과")
-fig, ax = plt.subplots()
-ax.plot(days, growth_curve, label="성장 곡선", color="green")
-ax.set_xlabel("재배 일수 (일)")
-ax.set_ylabel("생장 정도 (%)")
-ax.set_title("작물 성장 그래프")
-ax.legend()
-st.pyplot(fig)
+st.line_chart(df.set_index("일수"))
 
 # 환경 평가 출력
 st.subheader("🌡 환경 적합도 분석")
