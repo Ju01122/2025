@@ -2,6 +2,7 @@ import io
 import pandas as pd
 import numpy as np
 import streamlit as st
+pip install scikit-learn
 from sklearn.model_selection import train_test_split, TimeSeriesSplit, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
